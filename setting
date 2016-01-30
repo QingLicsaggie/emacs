@@ -1,0 +1,52 @@
+(require 'package)
+
+(add-to-list 'package-archives '("melpa". "http://melpa.milkbox.net/packages/"))
+
+(package-initialize)
+
+;auto-complete
+(require 'auto-complete)
+
+(require 'auto-complete-config)
+
+(ac-config-default)
+
+;YASnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+
+;auto-complete-c
+(defun my:ac-c-header-init()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers))
+
+(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-hook 'my:ac-c-header-init)
+
+
+;; basic
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+
+(auto-image-file-mode t)
+
+
+(setq c-default-style "ellemtel" c-basic-offset 4)
+(setq tab-width 4 indent-tabs-mode nil)
+(setq tab-stop-list ())
+
+(setq line-number-mode t) 
+(require 'linum)
+(global-linum-mode t)
+
+
+(set-language-environment 'UTF-8) 
+(set-locale-environment "UTF-8") 
+(set-default-font "Dejavu Sans Mono 11")
+
+(set-background-color "black")
+(set-foreground-color "white")
+(set-face-foreground 'region "green")
+(set-face-background 'region "blue")
